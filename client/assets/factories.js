@@ -7,7 +7,7 @@ app.factory('userFactory', function ($http, $location, $window) {
       if (typeof(callback) === 'function'){
           callback(returned_data.data);
         }
-    })   
+    })
     .catch(function (err) {
       console.log(err)
     });
@@ -27,7 +27,7 @@ app.factory('userFactory', function ($http, $location, $window) {
     //   console.log(err)
     // })
   };
-  
+
   factory.isAuth = function () {
     return !!$window.localStorage.getItem('manjula');
   };
@@ -36,6 +36,10 @@ app.factory('userFactory', function ($http, $location, $window) {
     $window.localStorage.removeItem('manjula');
     $location.path('/');
   };
+
+  factory.upload = function (image) {
+    console.log(image);
+  }
   return factory;
-  
+
 });

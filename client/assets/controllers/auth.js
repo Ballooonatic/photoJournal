@@ -1,4 +1,4 @@
-app.controller('AuthController', function($scope, userFactory, $window, $location){
+app.controller('AuthController', function($scope, userFactory, $window, $location, Upload){
 
 
   $scope.user = {};
@@ -26,5 +26,11 @@ app.controller('AuthController', function($scope, userFactory, $window, $locatio
     });
   };
 
+  $scope.uploadImage = function () {
+      console.log($scope.image);
+      userFactory.upload($scope.image, function () {
+        console.log("Upload works!");
+      });
+    };
 
 });

@@ -1,11 +1,11 @@
-<div id="dash" ng-controller=""> <!-- NOTE: maybe userController? -->
+<div id="dash" ng-controller="AuthController">
 
   <div id="upload_image">
 
-    <form action="/users/" method="post"> <!-- NOTE: which action lmao -->
-      <input type="file" name="image">
+    <form name="upload">
+      <div class="button" type="file" name="image" ngf-select ng-model="image" ngf-pattern="'image/*'" ngf-accept="'image/*'" ngf-max-size="20MB" ngf-min-height="100" ngf-resize="{width: 100, height: 100}">select file</div>
       <input type="text" name="tags" placeholder="tags">
-      <input type="submit" value="Upload" class="small button">
+      <button type="submit" class="tiny button" ng-click="uploadImage()">Upload</button>
     </form>
 
   </div>
