@@ -18,7 +18,7 @@ function AuthController(){
         var newUser = new User();
         newUser.username = username;
 
-        newUser.password = bcrypt.hashSync(password, bcrypt.genSaltSync(8));;        
+        newUser.password = bcrypt.hashSync(password, bcrypt.genSaltSync(8));;
         console.log('before user create ')
         newUser.save(function(err, doc) {
           if (err) {
@@ -26,13 +26,13 @@ function AuthController(){
 
           }
           console.log('after user create ')
-        
+
           var token = jwt.encode(newUser, secret);
           res.json({token: token});
         })
         }
     })
-    
+
   };
 
   this.signIn = function (req, res ) {
@@ -44,8 +44,8 @@ function AuthController(){
         res.json({error: 'User not found'});
       } else {
         // make a new user if not one
-        
-        
+
+
         if (bcrypt.compareSync(password, data.password))
         {
           console.log('user found, password match ')
@@ -56,10 +56,9 @@ function AuthController(){
         }
       }
     })
-  }
+  };
+
+
 }
 
 module.exports = new AuthController();
-
-
-
